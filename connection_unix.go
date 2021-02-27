@@ -42,6 +42,7 @@ type conn struct {
 	codec          ICodec                 // codec for TCP
 	buffer         []byte                 // reuse memory of inbound data as a temporary buffer
 	opened         bool                   // connection opened event fired
+	writePending   int                    // how many read calls the socket has missed
 	localAddr      net.Addr               // local addr
 	remoteAddr     net.Addr               // remote addr
 	byteBuffer     *bytebuffer.ByteBuffer // bytes buffer for buffering current packet and data in ring-buffer
